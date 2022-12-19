@@ -43,7 +43,7 @@ app.get("/posts", getAllPosts);
 app.get("/userposts/:userId", getCurrentUserPosts);
 app.post("/posts", isAuthenticated, addPost);
 app.put("/posts/:id", isAuthenticated, editPost);
-app.delete("/posts:id", isAuthenticated, deletePost);
+app.delete("/posts/:id", isAuthenticated, deletePost);
 
 // Sync methods to DB and have server listen. This will sync DB before server starts up
 // Can use force to DROP tables while building app / making changes

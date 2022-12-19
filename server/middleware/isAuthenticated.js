@@ -1,7 +1,7 @@
 require('dotenv').config()
 // Import json web token
 const jwt = require('jsonwebtoken')
-// Import secret from .env file
+// Import secret from .env file. This will be added to tokens.
 const {SECRET} = process.env
 
 module.exports = {
@@ -18,7 +18,7 @@ module.exports = {
         let token
 
         try {
-            token = jwt.verify(headerToken, SECRET)
+            token = jwt.verify(headerToken, SECRET) // Verify incoming tokens 
         } catch (err) {
             err.statusCode = 500
             throw err
@@ -31,6 +31,6 @@ module.exports = {
             throw error
         }
 
-        next()
+        next() // Once token is verified, request will move to next middleware function
     }
 }

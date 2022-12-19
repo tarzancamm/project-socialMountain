@@ -7,12 +7,13 @@ const Auth = () => {
   const [password, setPassword] = useState("");
   const [register, setRegister] = useState(true);
 
-  const authCtx = useContext(AuthContext)
+  const authCtx = useContext(AuthContext);
 
   const submitHandler = (e) => {
     e.preventDefault();
 
-    const url = "https://socialmtn.devmountain.com";
+    // const url = "https://socialmtn.devmountain.com";
+    const url = "http://localhost:5544";
 
     const body = {
       username,
@@ -23,7 +24,7 @@ const Auth = () => {
       .post(register ? `${url}/register` : `${url}/login`, body)
       .then((res) => {
         console.log(res.data);
-        authCtx.login(res.data.token, res.data.exp, res.data.userId)
+        authCtx.login(res.data.token, res.data.exp, res.data.userId);
       })
       .catch((err) => {
         setPassword("");
